@@ -10,6 +10,7 @@ class Redis
 
         args.each do |arg|
           arg = arg.to_s
+          arg.force_encoding("BINARY") if arg.respond_to?(:force_encoding)
           command << "$#{string_size arg}"
           command << arg
         end
